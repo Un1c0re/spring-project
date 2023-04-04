@@ -1,12 +1,9 @@
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
 import styles from "@/styles/Home.module.css"
+import Button from "@/components/Button";
 
 const Home = () => {
     return (
         <>
-            {/*<NavBar />*/}
-
             <h1 className="w-75 align-self-center text-center text-white fw-bolder" id={styles.mainText}>
                 Узнайте больше о вашем городе
             </h1>
@@ -16,12 +13,10 @@ const Home = () => {
                 найдите единомышленников, оживите свой город
             </p>
 
-            <button
-                className={`btn ${styles.button} align-self-center fs-4 text-center fw-bolder`}>
-                начать
-            </button>
-
-            {/*<Footer />*/}
+            <Button
+                className={`btn ${styles.button} align-self-center fs-4 text-center fw-bolder`}
+                href="/Login">начать
+            </Button>
         </>
     );
 };

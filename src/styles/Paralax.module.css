@@ -1,0 +1,8 @@
+.parallax {
+    position: absolute;
+    background: url("../../public/img/bg.jpg") no-repeat center center;
+    background-size: cover;
+    width: 110%;
+    height: 110%;
+
+}

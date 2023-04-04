@@ -1,9 +1,9 @@
 import styles from "@/styles/NavBar.module.css"
 import Link from "next/link"
-import Home from "@/pages/Home"
+
+
 const NavBar = () => {
     return (
-        // <div>
         <div className="navbar-collapse d-lg-flex">
             <Link className={`navbar-brand ${styles.brand} col-lg-3 text-white fs-3 fw-bolder`}
                   href="#">
@@ -28,7 +28,6 @@ const NavBar = () => {
                 </li>
             </ul>
         </div>
-        // </div>
     )
 }
 

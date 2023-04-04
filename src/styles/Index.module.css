@@ -3,7 +3,12 @@
 /*  overflow: hidden;*/
 /*}*/
 
-.parallax_bg {
+.parallax {
+    /*position: absolute;*/
     background: url("../../public/img/bg.jpg") no-repeat center center;
     background-size: cover;
+    /*width: 110%;*/
+    /*height: 110%;*/
+
+    transition: all 0.1s ease;
 }
