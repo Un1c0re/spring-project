@@ -1,0 +1,9 @@
+/*.parallax_fund {*/
+/*  position: relative;*/
+/*  overflow: hidden;*/
+/*}*/
+
+.parallax_bg {
+    background: url("../../public/img/bg.jpg") no-repeat center center;
+    background-size: cover;
+}
