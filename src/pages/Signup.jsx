@@ -3,7 +3,7 @@ import Link from "next/link";
 const Signup = () => (
     <>
         <div className={styles.box}>
-            <form className={styles.loginForm}>
+            <form className={styles.Form}>
                 <h1 className="h3 mb-2 fw-normal text-white fw-bold">Регистрация</h1>
 
                 <div className="form-floating w-100">
