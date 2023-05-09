@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from "@/components/NavBar";
+import StartNavBar from "@/components/StartNavBar";
 
 const Header = () => (
     <>
         <header>
-            <NavBar />
+            <StartNavBar />
         </header>
     </>
 );

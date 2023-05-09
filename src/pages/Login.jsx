@@ -1,7 +1,15 @@
 import styles from "@/styles/Login.module.css"
-import Link from "next/link";
+import Link from "next/link"
+import Button from "@/components/Button";
+import StartNavBar from "@/components/StartNavBar";
+import Footer from "@/components/Footer";
+
 const Login = () => (
     <>
+        <header>
+            <StartNavBar />
+        </header>
+
         <div className={styles.box}>
             <form className={styles.Form}>
                     <h1 className="h3 mb-2 fw-normal text-white fw-bold">Вход</h1>
@@ -33,14 +41,21 @@ const Login = () => (
                             href="/Signup">забыли пароль?</Link>
                     </div>
 
-                    <button className="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
-                    <button className="w-100 btn btn-lg btn-light" type="submit">продолжить с Google </button>
+                    <Button
+                        className="w-100 btn btn-lg btn-primary" type="submit"
+                        href="/MainPage">Войти
+                    </Button>
+                    <button className="w-100 btn btn-lg btn-light" type="submit">
+                        <img src="google.svg"/> продолжить с Google
+                    </button>
                     <div className="w-75 d-flex justify-content-around">
                         <p className="text-white">Впервые здесь?</p>
                         <Link className="text-white" href="/Signup"> Зарегистрируйтесь</Link>
                     </div>
             </form>
         </div>
+
+        <Footer />
     </>
 );
 

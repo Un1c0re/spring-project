@@ -2,7 +2,7 @@ import styles from "@/styles/NavBar.module.css"
 import Link from "next/link"
 
 
-const NavBar = () => {
+const StartNavBar = () => {
     return (
         <div className="navbar-collapse d-lg-flex">
             <Link className={`navbar-brand ${styles.brand} col-lg-3 text-white fs-3 fw-bolder`}
@@ -31,4 +31,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+export default StartNavBar;

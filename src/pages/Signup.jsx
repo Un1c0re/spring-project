@@ -1,7 +1,13 @@
 import styles from "@/styles/Login.module.css"
 import Link from "next/link";
+import StartNavBar from "@/components/StartNavBar";
+import Footer from "@/components/Footer";
 const Signup = () => (
     <>
+        <header>
+            <StartNavBar />
+        </header>
+
         <div className={styles.box}>
             <form className={styles.Form}>
                 <h1 className="h3 mb-2 fw-normal text-white fw-bold">Регистрация</h1>
@@ -42,6 +48,8 @@ const Signup = () => (
                 <Link className="text-white" href="/Login">У меня уже есть аккаунт</Link>
             </form>
         </div>
+
+        <Footer />
     </>
 );
 
