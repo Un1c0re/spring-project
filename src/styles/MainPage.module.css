@@ -15,11 +15,3 @@
 .search:focus-within {
     border: 1px solid white;
 }
-
-.content {
-    flex-grow: 1;
-
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-}

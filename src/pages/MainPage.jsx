@@ -2,7 +2,7 @@ import Sidebar from "@/components/Sidebar";
 import MainNavBar from "@/components/MainNavBar";
 import Footer from "@/components/Footer";
 import List from "@/components/List";
-import styles from "@/styles/MainPage.module.css"
+
 
 const MainPage = () => (
     <>
@@ -10,7 +10,7 @@ const MainPage = () => (
             <MainNavBar />
         </header>
 
-        <div className={styles.content}>
+        <div className="flex-grow-1 d-flex justify-content-lg-between ">
             <Sidebar />
             <List />
         </div>

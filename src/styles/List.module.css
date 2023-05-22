@@ -1,9 +1,0 @@
-.list {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 50px;
-    overflow-y: scroll;
-
-}
