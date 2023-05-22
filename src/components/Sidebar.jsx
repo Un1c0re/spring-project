@@ -1,14 +1,13 @@
-
+import Link from "next/link"
 
 const Sidebar  = () => (
     <div className="d-flex flex-column flex-shrink-0 p-3 h-100 w-25">
 
         <ul className="nav nav-pills flex-column mb-auto">
                 <li className="nav-item">
-                    <a href="#" className="nav-link active" aria-current="page">
-                        <svg className="bi pe-none me-2" width="16" height="16"></svg>
+                    <Link href="/Profile" className="nav-link active" aria-current="page">
                         Главная
-                    </a>
+                    </Link>
                 </li>
                 <li>
                     <a href="#" className="nav-link text-white">
