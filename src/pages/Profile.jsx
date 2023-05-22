@@ -1,32 +1,24 @@
 "use client";
 
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import MainNavBar from "@/components/MainNavBar";
-import styles from "@/styles/MainPage.module.css";
 import Sidebar from "@/components/Sidebar";
 import axios from "axios";
+import styles from "@/styles/Profile.module.css";
+
 
 const Profile = () => {
-    const router = useRouter();
     const [user, setUser] = useState({null: "start"});
-    const [data, setData] = useState(null);
 
     useEffect(() => {
         const source = axios.CancelToken.source();
 
         const fetchData = async () => {
             try {
-                const response = await axios.get("/api/profile", {
-                    cancelToken: source.token
-                });
-                setData(response.data);
+                const response = await axios.get("/api/profile");
+                setUser(response.data);
             } catch (error) {
-                if (axios.isCancel(error)) {
-                    console.log("Request cancelled:", error.message);
-                } else {
-                    console.error(error);
-                }
+                console.error(error);
             }
         };
 
@@ -37,27 +29,17 @@ const Profile = () => {
         };
     }, []);
 
-    // const getFromServer = async () => {
-    //     try {
-    //         const data = await axios.get("/api/profile")
-    //
-    //     } catch(e) {
-    //         console.log("SUUUKAAA");
-    //         console.log(e);
-    //     }
-    //
-    // }
-
     return (
         <div>
             <MainNavBar />
-            <div className={styles.content}>
+            <div className={styles.profile}>
                 <Sidebar />
-                <div>
-                    <div>
-                        <img src="" alt="фото профиля"/>
+                <div className={styles.content}>
+                    <div className={styles.photo}>
+                        <img src="/img/filler.jpg" alt="фото профиля"/>
                     </div>
-
+                        <p className={styles.info}> {user.login}</p>
+                        <p className={styles.info}>{user.email}</p>
                 </div>
             </div>
         </div>

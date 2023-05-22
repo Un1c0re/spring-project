@@ -26,7 +26,7 @@ const Signup = () => {
         try {
             const data = await axios.post("/api/signup", formJson);
             setMsg({msg: data.data.status});
-            await router.push("/Main")
+            // await router.push("/Main")
         } catch (e) {
             setMsg({err: e.response.data.status});
         };

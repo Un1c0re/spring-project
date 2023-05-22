@@ -13,7 +13,7 @@ const handler = async (req, res) => {
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
             // const userId = decodedToken.userId;
             console.log(decodedToken);
-            res.status(200).json({data: decodedToken});
+            res.status(200).json(decodedToken);
             // используем данные из токена
             // const
         } catch (e) {

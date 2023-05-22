@@ -3,7 +3,7 @@
 import Sidebar from "@/components/Sidebar";
 import MainNavBar from "@/components/MainNavBar";
 import List from "@/components/List";
-
+import styles from "@/styles/MainPage.module.css"
 
 const Main = () => (
     <>
@@ -11,8 +11,8 @@ const Main = () => (
             <MainNavBar />
         </header>
 
-        <div className="flex-grow-1 d-flex justify-content-lg-between ">
-            <Sidebar />
+        <div className={styles.content}>
+            <Sidebar index={0}/>
             <List />
         </div>
     </>

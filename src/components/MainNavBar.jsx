@@ -19,7 +19,7 @@ const MainNavBar = () => {
 
                 <li className="nav-item me-lg-5">
                     <Link className={`nav-link fs-5 fw-semibold text-white`}
-                          href="/">Сургут
+                          href="#">Сургут
                     </Link>
                 </li>
             </ul>
