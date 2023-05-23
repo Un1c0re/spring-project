@@ -10,12 +10,6 @@ export default async function handler(req, res) {
     const {email, password} = req.body;
     const { token } = parseCookies({ req });
 
-    // Хеширование пароля
-    const hashPassword = async (password) => {
-        const saltRounds = 10;
-        return await bcrypt.hash(password, saltRounds);
-    };
-
     if (token) {
         // если токен найден, отправляем его в заголовке HTTP
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);

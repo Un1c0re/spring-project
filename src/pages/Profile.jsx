@@ -35,7 +35,6 @@ const Profile = () => {
     const eatCookie = async () => {
         // Получение значения куки по имени на стороне клиента
         const myCookieName = 'myCookie';
-        const myCookieValue = parseCookies()[myCookieName]; // получение значения куки
 
         // Удаление куки по имени на стороне клиента
         const handleDeleteCookie = () => {

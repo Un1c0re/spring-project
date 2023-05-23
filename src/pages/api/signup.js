@@ -22,7 +22,7 @@ const  handler = async (req, res) => {
                 return await bcrypt.hash(password, saltRounds);
             };
             const hashedPassword = await hashPassword(password);
-            const [data] = await connection.query(
+            await connection.query(
                 'INSERT INTO user (email, login, password) VALUES (?, ?, ?)', [email, login, hashedPassword]
             );
 
