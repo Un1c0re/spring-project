@@ -4,7 +4,6 @@ import {useRouter} from "next/router";
 
 const Sidebar  = (index) => {
     const [active, setActive] = useState(0);
-    console.log(active);
     return (
         <div className="d-flex flex-column flex-shrink-0 p-3 h-100 w-25">
 
@@ -26,13 +25,14 @@ const Sidebar  = (index) => {
                 </li>
                 <li>
                     <Link href="#" className={`nav-link ${active === 2 ? `active`: `text-white`}`}
-                        on Click={()=>setActive(index.value?? 2)}>
+                        onClick={()=>setActive(index.value?? 2)}>
 
                         Активные мероприятия
                     </Link>
                 </li>
                 <li>
-                    <a href="#" className="nav-link text-white">
+                    <a href="#" className={`nav-link ${active === 3 ? `active`: `text-white`}`}
+                        onClick={()=>setActive(index.value?? 3)}>
                         Мои мероприятия
                     </a>
                 </li>

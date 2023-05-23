@@ -1,26 +1,36 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
+import styles from "@/styles/Carousel.module.css"
 
-
-const BootstrapCarousel = () => (
-    <>
+const BootstrapCarousel = () => {
+    const data = [
+        ["cl1.jpg", "Узнайте", "Откройте для себя неведомые ранее мероприятия вашего города", "cl1.jpg"],
+        ["cl2.jpg", "Посетите", "Научные конференции, в книжные клубы, концерты, мастер классы и многое другое"],
+        ["cl3.jpg", "Знакомьтесь", "Найдите тех, кто разделяет ваши интересы, и заведите новых друзей"],
+        ["cl4.jpg", "Творите", "Организуйте свое мероприятие, вдохните жизнь в улицы вашего города"]
+    ]
+    return (
         <Carousel>
-            {["cl_1.jpg", "cl_2.jpg", "cl_3.jpg"].map((x) => (
-                // eslint-disable-next-line react/jsx-key
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={`img/${x}`}
-                        alt="photo"
-                    />
-                    <Carousel.Caption>
-                        <h1>Wabo labo dub dub</h1>
-                        <p>yeahhh lorem ipsummmmmmaaaaa</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            ))}
+            {data.map(x => {
+                return (
+                    // eslint-disable-next-line react/jsx-key
+                    <Carousel.Item>
+                        <img
+                            className={styles.image}
+                            src={`img/${x[0]}`}
+                            alt="photo"
+                        />
+                        <Carousel.Caption>
+                            <h1>{x[1]}</h1>
+                            <p>{x[2]}</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    )
+
+            })}
         </Carousel>
-    </>
-);
+    );
+};
+
 
 export default BootstrapCarousel;

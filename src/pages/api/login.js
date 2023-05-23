@@ -12,7 +12,12 @@ export default async function handler(req, res) {
 
     if (token) {
         // если токен найден, отправляем его в заголовке HTTP
-        res.setHeader("Authorization", `Bearer ${token}`);
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const data = decodedToken.data;
+
+        if(data.email === email && data.password === password) {
+            res.setHeader("Authorization", `Bearer ${token}`);
+        }
     } else {
         try {
             const [data] = await connection.query(

@@ -18,11 +18,11 @@ const  handler = async (req, res) => {
             const [data] = await connection.query(
                 'INSERT INTO user (email, login, password) VALUES (?, ?, ?)', [email, login, password]
             );
-            const user = data[0];
+
             const payload =  {
-                email: user.email,
-                login: user.login,
-                password: user.password
+                email: email,
+                login: login,
+                password: password
             }
 
             const token = jwt.sign(payload, process.env.JWT_SECRET, {

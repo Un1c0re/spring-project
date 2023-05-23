@@ -42,3 +42,17 @@
     font-size: 1.2vw;
     font-weight: bold;
 }
+
+.btn {
+    height: 40px;
+    width: 300px;
+
+    background: rgb(213, 41, 67);
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    box-shadow: 5px 8px 8px 0px rgba(34, 60, 80, 0.2);
+}
