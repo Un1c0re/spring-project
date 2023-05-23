@@ -50,7 +50,7 @@ export default async function handler(req, res) {
                     res.status(200).json({status: 'Добро пожаловать! 🥳' });
                 }
             } else {
-                res.status(403).json({ status: 'Такого пользователя не существует 🧐' });
+                res.status(403).json({ status: 'Нет такого пользователя 🧐' });
             }
         } catch (e) {
             console.log(e);

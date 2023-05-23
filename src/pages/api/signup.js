@@ -9,12 +9,18 @@ const  handler = async (req, res) => {
     const connection = await connect();
     const {email, login, password} = req.body;
 
+    if(password.length <= 0) {
+        res.status(403).json({status: "Введите пароль 🤨"})
+        connection.end();
+        return;
+    }
+
     try {
         const [check] = await connection.query(
             'SELECT email FROM user where email = ? or login = ?', [email, login]
         );
         if(check.length > 0) {
-            res.status(403).json({status: "такой пользователь уже существует 🧐"})
+            res.status(403).json({status: "Такой пользователь уже есть 🧐"})
         } else {
             // Хеширование пароля
             const hashPassword = async (password) => {
