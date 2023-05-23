@@ -1,14 +1,20 @@
 "use server";
 
 import connect from "./db"
-import { setCookie, parseCookies } from "nookies";
+import {parseCookies, setCookie} from "nookies";
 import jwt from "jsonwebtoken";
-
+import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
     const connection = await connect();
     const {email, password} = req.body;
     const { token } = parseCookies({ req });
+
+    // Хеширование пароля
+    const hashPassword = async (password) => {
+        const saltRounds = 10;
+        return await bcrypt.hash(password, saltRounds);
+    };
 
     if (token) {
         // если токен найден, отправляем его в заголовке HTTP
@@ -26,8 +32,12 @@ export default async function handler(req, res) {
 
             if (data.length > 0) {
                 const user = data[0];
-                if (password !== user.password) {
-                    res.status(403).json({ status: 'Ты не свой бля 👿' });
+
+                const hashedPassword = user.password;
+                const match = await bcrypt.compare(password, hashedPassword);
+
+                if (!match) {
+                    res.status(403).json({ status: 'Неверный пароль 👿' });
                 } else {
                     const payload =  {
                         email: user.email,
@@ -43,10 +53,10 @@ export default async function handler(req, res) {
                         path: "/", // путь, на котором cookie будет доступен
                     });
 
-                    res.status(200).json({status: 'Вы вошли епта 😎' });
+                    res.status(200).json({status: 'Добро пожаловать! 🥳' });
                 }
             } else {
-                res.status(403).json({ status: 'Тебя нет в списке 👿' });
+                res.status(403).json({ status: 'Такого пользователя не существует 🧐' });
             }
         } catch (e) {
             console.log(e);

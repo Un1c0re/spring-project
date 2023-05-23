@@ -31,7 +31,7 @@ const Sidebar  = (index) => {
                     </Link>
                 </li>
                 <li>
-                    <a href="#" className={`nav-link ${active === 3 ? `active`: `text-white`}`}
+                    <a href="/MyEvents" className={`nav-link ${active === 3 ? `active`: `text-white`}`}
                         onClick={()=>setActive(index.value?? 3)}>
                         Мои мероприятия
                     </a>

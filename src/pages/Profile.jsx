@@ -54,7 +54,7 @@ const Profile = () => {
                 <Sidebar />
                 <div className={styles.content}>
                     <div className={styles.photo}>
-                        <img src="/img/filler.jpg" alt="фото профиля"/>
+                        <img className={styles.image} src="/img/filler.jpg" alt="фото профиля"/>
                     </div>
                         <p className={styles.info}> {user.login}</p>
                         <p className={styles.info}>{user.email}</p>

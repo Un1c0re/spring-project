@@ -1,8 +1,9 @@
 "use server";
 
 import connect from "./db"
-import { setCookie } from "nookies";
+import {setCookie} from "nookies";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const  handler = async (req, res) => {
     const connection = await connect();
@@ -13,10 +14,16 @@ const  handler = async (req, res) => {
             'SELECT email FROM user where email = ? or login = ?', [email, login]
         );
         if(check.length > 0) {
-            res.status(403).json({status: "такой пользователь уже существует"})
+            res.status(403).json({status: "такой пользователь уже существует 🧐"})
         } else {
+            // Хеширование пароля
+            const hashPassword = async (password) => {
+                const saltRounds = 10;
+                return await bcrypt.hash(password, saltRounds);
+            };
+            const hashedPassword = await hashPassword(password);
             const [data] = await connection.query(
-                'INSERT INTO user (email, login, password) VALUES (?, ?, ?)', [email, login, password]
+                'INSERT INTO user (email, login, password) VALUES (?, ?, ?)', [email, login, hashedPassword]
             );
 
             const payload =  {
@@ -33,7 +40,7 @@ const  handler = async (req, res) => {
                 maxAge: 3600, // срок действия cookie в секундах
                 path: "/", // путь, на котором cookie будет доступен
             });
-            res.status(200).json({status: 'Вы зарегистрировались'});
+            res.status(200).json({status: 'Добро пожаловать 🥳'});
         }
     } catch (e) {
         console.log(e);
