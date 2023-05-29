@@ -7,11 +7,13 @@ import axios from "axios";
 import styles from "@/styles/Profile.module.css";
 import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import DropImage from "@/components/DropImage";
 
 const Profile = () => {
     const [modalActive, setModalActive] = useState(false);
     const [user, setUser] = useState({null: "start"});
+    const [avatar, setAvatar] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -47,7 +49,20 @@ const Profile = () => {
         handleDeleteCookie();
     }
 
-    console.log("cookie: \n", user);
+    useEffect(() => {
+        const getAvatar =  async () => {
+            // if(avatar == null) {
+                try {
+                    const response = await axios.get("/api/getPhoto");
+                    setAvatar(response.data);
+                } catch (e) {
+                    console.log(e);
+                }
+            // }
+        }
+        getAvatar();
+
+    }, [avatar]);
 
     return (
         <div>
@@ -57,7 +72,7 @@ const Profile = () => {
                 <div className={styles.content}>
                     <div className={styles.profilePhoto}>
                         <div className={styles.photo}>
-                            <img className={styles.image} src= {user.photo} alt="фото профиля"/>
+                            <Image  src={`data:image/jpeg;base64,${avatar}`} width={200} height={200} alt="фото профиля" loading="eager"/>
                         </div>
                         <button type="button" className={`${styles.btn}`} onClick={()=> setModalActive(true)}>Изменить аватар</button>
                     </div>

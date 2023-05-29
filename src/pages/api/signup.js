@@ -36,7 +36,6 @@ const  handler = async (req, res) => {
                 email: email,
                 login: login,
                 password: password,
-                photo: null
             }
 
             const token = jwt.sign(payload, process.env.JWT_SECRET, {

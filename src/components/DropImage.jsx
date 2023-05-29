@@ -29,7 +29,7 @@ const DropImage = ({active, setActive, userData}) => {
         const data = {photo: imageBuffer, userData: userData}
 
         try {
-            const response = await axios.post("/api/avatar", data);
+            const response = await axios.post("/api/setPhoto", data);
             setMsg({msg: response.data.status});
         } catch (e) {
             setMsg({err: e.response.data.status});

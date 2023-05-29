@@ -11,7 +11,6 @@ const handler = async (req, res) => {
         try {
             // декодируем токен и получаем полезную нагрузку
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-            console.log("token????", decodedToken);
             res.status(200).json(decodedToken);
         } catch (e) {
             console.log(e)

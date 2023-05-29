@@ -27,8 +27,6 @@ export default async function handler(req, res) {
             if (data.length > 0) {
                 const user = data[0];
 
-                const photo = Buffer.from(user.photo, 'base64').toString('base64');
-
                 const hashedPassword = user.password;
                 const match = await bcrypt.compare(password, hashedPassword);
 
@@ -39,7 +37,6 @@ export default async function handler(req, res) {
                         email: user.email,
                         login: user.login,
                         password: user.password,
-                        photo: photo
                     }
                     console.log(payload);
                     const token = jwt.sign(payload, process.env.JWT_SECRET, {
