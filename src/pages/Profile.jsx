@@ -5,11 +5,12 @@ import MainNavBar from "@/components/MainNavBar";
 import Sidebar from "@/components/Sidebar";
 import axios from "axios";
 import styles from "@/styles/Profile.module.css";
-import {destroyCookie, parseCookies} from "nookies";
+import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
-
+import DropImage from "@/components/DropImage";
 
 const Profile = () => {
+    const [modalActive, setModalActive] = useState(false);
     const [user, setUser] = useState({null: "start"});
     const router = useRouter();
 
@@ -34,7 +35,7 @@ const Profile = () => {
 
     const eatCookie = async () => {
         // Получение значения куки по имени на стороне клиента
-        const myCookieName = 'myCookie';
+        const myCookieName = "token";
 
         // Удаление куки по имени на стороне клиента
         const handleDeleteCookie = () => {
@@ -46,20 +47,28 @@ const Profile = () => {
         handleDeleteCookie();
     }
 
+    console.log("cookie: \n", user);
+
     return (
         <div>
             <MainNavBar />
             <div className={styles.profile}>
                 <Sidebar />
                 <div className={styles.content}>
-                    <div className={styles.photo}>
-                        <img className={styles.image} src="/img/filler.jpg" alt="фото профиля"/>
+                    <div className={styles.profilePhoto}>
+                        <div className={styles.photo}>
+                            <img className={styles.image} src= {user.photo} alt="фото профиля"/>
+                        </div>
+                        <button type="button" className={`${styles.btn}`} onClick={()=> setModalActive(true)}>Изменить аватар</button>
                     </div>
-                        <p className={styles.info}> {user.login}</p>
-                        <p className={styles.info}>{user.email}</p>
-                        <button className={styles.btn} onClick={eatCookie}>Выйти</button>
+                    <div className={styles.data}>
+                        <p className={styles.info}> {user.login} </p>
+                        <p className={styles.info}> {user.email} </p>
+                        <button className={`${styles.btn}  ${styles.redbtn}`} onClick={eatCookie}>Выйти</button>
+                    </div>
                 </div>
             </div>
+            <DropImage active={modalActive} setActive={setModalActive} userData={user}/>
         </div>
     );
 }

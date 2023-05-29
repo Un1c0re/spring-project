@@ -4,9 +4,9 @@ import styles from "@/styles/Login.module.css"
 import Link from "next/link"
 import StartNavBar from "@/components/StartNavBar";
 import Footer from "@/components/Footer";
-import {useState} from "react";
+import { useState } from "react";
 import axios from "axios";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 
 

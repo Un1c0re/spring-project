@@ -27,6 +27,8 @@ export default async function handler(req, res) {
             if (data.length > 0) {
                 const user = data[0];
 
+                const photo = Buffer.from(user.photo, 'base64').toString('base64');
+
                 const hashedPassword = user.password;
                 const match = await bcrypt.compare(password, hashedPassword);
 
@@ -36,8 +38,10 @@ export default async function handler(req, res) {
                     const payload =  {
                         email: user.email,
                         login: user.login,
-                        password: user.password
+                        password: user.password,
+                        photo: photo
                     }
+                    console.log(payload);
                     const token = jwt.sign(payload, process.env.JWT_SECRET, {
                         expiresIn: "1h", // срок действия токена
                     });
@@ -46,7 +50,6 @@ export default async function handler(req, res) {
                         maxAge: 3600, // срок действия cookie в секундах
                         path: "/", // путь, на котором cookie будет доступен
                     });
-
                     res.status(200).json({status: 'Добро пожаловать! 🥳' });
                 }
             } else {

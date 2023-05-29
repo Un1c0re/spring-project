@@ -14,8 +14,7 @@
 
 .content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: space-around;
     width: 100%;
     padding: 5% 0 20% 0;
@@ -28,35 +27,56 @@
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+.profilePhoto {
+    height: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .photo {
     height: 10vw;
     width: 10vw;
+    border: 1px solid white;
     border-radius: 50%;
     overflow: hidden;
+
+    display: flex;
+    color: white;
+    align-items: center;
 }
 
+.data {
+    height: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
 .info {
-    background: rgba(255, 255, 255, 0.2);
     color: white;
-    border-radius: 5px;
     height: 40px;
     width: 300px;
 
     display: flex;
-    justify-content: center;
-    font-size: 1.2vw;
+    font-size: 1vw;
     font-weight: bold;
+    border-bottom: 1px solid white;
 }
 
 .btn {
     height: 40px;
     width: 300px;
-
-    background: rgb(213, 41, 67);
+    background: none;
     border-radius: 5px;
     color: white;
     border: none;
 }
+
+.redbtn { background: rgb(213, 41, 67); }
 
 .btn:hover {
     box-shadow: 5px 8px 8px 0 rgba(34, 60, 80, 0.2);
