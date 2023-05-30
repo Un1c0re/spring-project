@@ -2,7 +2,7 @@ import Header from "@/components/Header"
 import styles from "@/styles/Index.module.css"
 
 
-const Layout = ({ children }) => (
+const StartLayout = ({ children }) => (
     <div className={styles.bg}>
         <div className="container vh-100 pt-5 d-flex flex-column a justify-content-between">
             {children}
@@ -10,4 +10,4 @@ const Layout = ({ children }) => (
     </div>
 );
 
-export default Layout;
+export default StartLayout;

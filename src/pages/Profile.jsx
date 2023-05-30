@@ -53,7 +53,7 @@ const Profile = () => {
         const getAvatar =  async () => {
             // if(avatar == null) {
                 try {
-                    const response = await axios.get("/api/getPhoto");
+                    const response = await axios.get("/api/getUserPhoto");
                     setAvatar(response.data);
                 } catch (e) {
                     console.log(e);
@@ -70,16 +70,19 @@ const Profile = () => {
             <div className={styles.profile}>
                 <Sidebar />
                 <div className={styles.content}>
-                    <div className={styles.profilePhoto}>
+                    <div className={styles.photoData}>
                         <div className={styles.photo}>
                             <Image  src={`data:image/jpeg;base64,${avatar}`} width={200} height={200} alt="фото профиля" loading="eager"/>
                         </div>
-                        <button type="button" className={`${styles.btn}`} onClick={()=> setModalActive(true)}>Изменить аватар</button>
+                        <button
+                            className={`${styles.btn} ${styles.photoBtn}`}
+                            onClick={()=> setModalActive(true)}
+                        >Изменить аватар</button>
                     </div>
-                    <div className={styles.data}>
+                    <div className={styles.userData}>
                         <p className={styles.info}> {user.login} </p>
                         <p className={styles.info}> {user.email} </p>
-                        <button className={`${styles.btn}  ${styles.redbtn}`} onClick={eatCookie}>Выйти</button>
+                        <button className={`${styles.btn}  ${styles.redBtn}`} onClick={eatCookie}>Выйти</button>
                     </div>
                 </div>
             </div>

@@ -29,28 +29,43 @@ const DropImage = ({active, setActive, userData}) => {
         const data = {photo: imageBuffer, userData: userData}
 
         try {
-            const response = await axios.post("/api/setPhoto", data);
+            const response = await axios.post("/api/setUserPhoto", data);
             setMsg({msg: response.data.status});
+            setActive(false);
+            window.location.reload();
         } catch (e) {
             setMsg({err: e.response.data.status});
             console.log(msg);
-        };
+        }
+    }
+
+    const uploadCancel = async (e) => {
+        setImage(null);
+        setActive(false)
     }
 
     return (
-        <div className={ active ? `${styles.bg} ${styles.active}` : styles.bg} onClick={()=> setActive(false)}>
-            <div className={styles.box} onClick={e => e.stopPropagation()} {...getRootProps()}>
-                <input {...getInputProps()}/>
-
-                {image ? (
+        <div className={ active ? `${styles.bg} ${styles.active}` : styles.bg}>
+            {image ? (
+                <div className={styles.uploadWindow} onClick={e => e.stopPropagation()}>
                     <div className={styles.content}>
                         <img src={image} alt="Загруженное изображение" />
-                        <button className="btn-warning" onClick={e => uploadSubmit(e)}>Подвтердить</button>
+                        <div className="w-100 d-flex flex-row justify-content-between">
+                            <button className={styles.cancelBtn} onClick={e => uploadCancel(e)}>Отменить</button>
+                            <button className={styles.submitBtn} onClick={e => uploadSubmit(e)}>Подвтердить</button>
+                        </div>
                     </div>
-                ) : (
-                    <p>Перетащите фотографию сюда или нажмите, чтобы выбрать файл</p>
-                )}
-            </div>
+                </div>
+            ) : (
+                <div className={styles.uploadWindow}>
+                    <div className={`${styles.dropZone}`} onClick={e => e.stopPropagation()} {...getRootProps()}>
+                        <input {...getInputProps()}/>
+                        <p>Перетащите фотографию сюда</p>
+                        <p>или нажмите, чтобы выбрать файл</p>
+                    </div>
+                    <button className={styles.cancelBtn} onClick={e => uploadCancel(e)}>Отменить</button>
+                </div>
+            )}
         </div>
     );
 };

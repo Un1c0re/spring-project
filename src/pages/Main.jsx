@@ -7,15 +7,17 @@ import styles from "@/styles/MainPage.module.css"
 
 const Main = () => (
     <>
-        <header>
-            <MainNavBar />
-        </header>
+        {/*<header>*/}
+        {/*    <MainNavBar />*/}
+        {/*</header>*/}
 
-        <div className={styles.content}>
-            <Sidebar index={0}/>
-            <List />
-        </div>
+        {/*<div className={styles.content}>*/}
+        {/*    <Sidebar index={0}/>*/}
+        <List />
+        {/*</div>*/}
     </>
-);
+).;
+
+Main.getLayout()
 
 export default Main;

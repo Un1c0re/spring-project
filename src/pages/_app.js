@@ -1,10 +1,21 @@
 import '@/styles/globals.css'
-import Layout from "@/components/Layout";
+import StartLayout from "@/components/StartLayout";
 
 const App = ({ Component, pageProps }) => (
-    <Layout>
+    <StartLayout>
         <Component {...pageProps} />
-    </Layout>
+    </StartLayout>
 );
 
 export default App;
+
+
+import Layout from '../components/StartLayout';
+
+function MyApp({ Component, pageProps }) {
+    const getLayout = Component.getLayout || ((page) => <Layout children={page} />);
+
+    return getLayout(<Component {...pageProps} />);
+}
+
+export default MyApp;

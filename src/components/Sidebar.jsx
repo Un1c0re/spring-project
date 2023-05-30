@@ -1,9 +1,27 @@
 import Link from "next/link"
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {IMAGES_MANIFEST} from "next/constants";
+import Image from "next/image";
 
 
 const Sidebar  = (index) => {
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState(null);
+    const [avatar, setAvatar] = useState(null);
+
+    useEffect(() => {
+        const getAvatar =  async () => {
+            try {
+                const response = await axios.get("/api/getUserPhoto");
+                setAvatar(response.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getAvatar();
+
+    }, [avatar]);
+
     return (
         <div className="d-flex flex-column flex-shrink-0 p-3 h-100 w-25">
 
@@ -46,8 +64,15 @@ const Sidebar  = (index) => {
 
             <div>
                 <Link className="d-flex align-items-center text-white text-decoration-none"
+                      onClick={()=>setActive(index.value?? null)}
                         href="/Profile">
-                    <img src="/img/filler.jpg" alt="" width="32" height="32" className="rounded-circle me-2"/>
+                    <Image
+                        src={`data:image/jpeg;base64,${avatar}`}
+                        width={50}
+                        height={50}
+                        alt="фото профиля"
+                        className="rounded-circle me-2"
+                        loading="eager"/>
                     <strong>профиль</strong>
                 </Link>
             </div>
