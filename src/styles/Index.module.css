@@ -1,6 +1,4 @@
 .bg {
-
     background: url("../../public/img/bg2.jpg") no-repeat center center;
     background-size: cover;
-    transition: all 0.1s ease;
 }

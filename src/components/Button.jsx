@@ -2,8 +2,6 @@ import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Link from "next/link"
-
-// className={`btn ${styles.button} align-self-center fs-4 text-center fw-bolder`}
 const Button = ({children, onClick, className, disabled, active, ...attrs}) => {
 
     const classes = classNames(

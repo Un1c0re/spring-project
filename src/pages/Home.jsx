@@ -1,14 +1,14 @@
-import styles from "@/styles/Home.module.css"
 import Button from "@/components/Button";
-import StartNavBar from "@/components/StartNavBar";
-import Footer from "@/components/Footer";
+import withStartLayout from "@/utils/hocs/withStartLayout";
+import {useState} from "react";
+import Login from "@/components/Login";
+import styles from "@/styles/Home.module.css";
+
 const Home = () => {
+    const [modalActive, setModalActive] = useState(false);
+
     return (
         <>
-            <header>
-                <StartNavBar />
-            </header>
-
             <h1 className="w-75 align-self-center text-center text-white fw-bolder" id={styles.mainText}>
                 Узнайте больше о вашем городе
             </h1>
@@ -19,13 +19,14 @@ const Home = () => {
             </p>
 
             <Button
-                className={`btn ${styles.button} align-self-center fs-4 text-center fw-bolder`}
-                href="/Login">начать
+                className={`btn-light ${styles.button} align-self-center fs-4 text-center fw-bolder`}
+                onClick={() => setModalActive(true)}
+            >начать
             </Button>
-
-            <Footer />
+            <Login active={modalActive} setActive={setModalActive}/>
         </>
     );
 };
 
-export default Home;
+
+export default withStartLayout(Home);

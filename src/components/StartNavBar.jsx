@@ -21,11 +21,11 @@ const StartNavBar = () => {
                           href="/About">О проекте
                     </Link>
                 </li>
-                <li className="nav-item me-lg-5">
-                    <Link className={`nav-link ${styles.nav_link} fs-5 fw-semibold`}
-                          href="/posts">Контакты
-                    </Link>
-                </li>
+                {/*<li className="nav-item me-lg-5">*/}
+                {/*    <Link className={`nav-link ${styles.nav_link} fs-5 fw-semibold`}*/}
+                {/*          href="/posts">Контакты*/}
+                {/*    </Link>*/}
+                {/*</li>*/}
             </ul>
         </div>
     )

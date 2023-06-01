@@ -1,13 +1,9 @@
 .bg {
-
     background: url("../../public/img/bg2.jpg") no-repeat center center;
     background-size: cover;
-    transition: all 0.1s ease;
 }
 
 .content {
-    flex-grow: 1;
-
     display: flex;
     justify-content: space-between;
     overflow: hidden;

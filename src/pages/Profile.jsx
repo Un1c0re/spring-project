@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import MainNavBar from "@/components/MainNavBar";
-import Sidebar from "@/components/Sidebar";
 import axios from "axios";
 import styles from "@/styles/Profile.module.css";
 import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import DropImage from "@/components/DropImage";
+import withMainLayout from "@/utils/hocs/withMainLayout";
 
 const Profile = () => {
     const [modalActive, setModalActive] = useState(false);
@@ -65,10 +64,8 @@ const Profile = () => {
     }, [avatar]);
 
     return (
-        <div>
-            <MainNavBar />
+        <>
             <div className={styles.profile}>
-                <Sidebar />
                 <div className={styles.content}>
                     <div className={styles.photoData}>
                         <div className={styles.photo}>
@@ -87,8 +84,8 @@ const Profile = () => {
                 </div>
             </div>
             <DropImage active={modalActive} setActive={setModalActive} userData={user}/>
-        </div>
+        </>
     );
 }
 
-export default Profile;
+export default withMainLayout(Profile, 5);

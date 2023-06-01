@@ -8,7 +8,7 @@ const  handler = async (req, res) => {
 
     const photo = Buffer.from(clientData.photo, 'base64');
     const userData = clientData.userData;
-
+    console.log("i'm here");
     try {
         const [rows] = await connection.query('SELECT * FROM user WHERE login = ?', [userData.login]);
         if (rows.length > 0) {
