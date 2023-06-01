@@ -41,11 +41,10 @@ const Profile = () => {
         // Удаление куки по имени на стороне клиента
         const handleDeleteCookie = () => {
             destroyCookie(null, myCookieName); // удаление куки
-            console.log("success!");
         };
 
-        await router.push("/");
         handleDeleteCookie();
+        await router.push("/");
     }
 
     useEffect(() => {
