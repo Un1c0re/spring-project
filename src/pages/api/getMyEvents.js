@@ -12,11 +12,11 @@ const handler = async (req, res) => {
         try {
             // декодируем токен и получаем полезную нагрузку
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-            const email = decodedToken.data.email;
+            const email = decodedToken.login;
             try {
-                const [userid] = await connection.query("SELECT user_id FROM user WHERE email = ?", [email]);
-                console.log(userid);
-                const [data] = await connection.query('SELECT * FROM events WHERE owner_id = ?', [userid]);
+                const [userdata] = await connection.query("SELECT user_id FROM user WHERE login = ?", [email]);
+                const userid = (userdata[0]).user_id;
+                const [data] = await connection.query('SELECT * FROM event WHERE owner_id = ?', [userid]);
 
                 if(data.length > 0) {
                     res.status(200).json(data);

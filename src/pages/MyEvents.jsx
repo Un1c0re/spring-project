@@ -1,50 +1,63 @@
 "use client"
 
-import MainNavBar from "@/components/MainNavBar";
-import styles from "@/styles/Profile.module.css";
-import Sidebar from "@/components/Sidebar";
 import axios from "axios";
 import {useState} from "react";
-
+import withMainLayout from "@/utils/hocs/withMainLayout";
+import styles from "@/styles/MyEvents.module.css";
+import CreateEvent from "@/components/CreateEvent";
 
 const MyEvents = () => {
-    const [eventList,setEventList] = useState("");
+    const [eventList,setEventList] = useState(null);
+    const [modalActive, setModalActive] = useState(false);
     const getFromServer = async () => {
-        try {
-            const response = await axios.get("/api/events");
-            setEventList(response.data);
-        } catch (error) {
-            console.log(error);
+        if(eventList == null) {
+            try {
+                const response = await axios.get("/api/getMyEvents");
+                setEventList(response.data);
+                console.log(eventList);
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
+    const getDatetime = (raw) => {
+        const datetime = new Date(raw);
+
+        const day = datetime.getDate().toString().padStart(2, '0');
+        const month = (datetime.getMonth() + 1).toString().padStart(2, '0');
+        const year = datetime.getFullYear();
+        const hours = datetime.getHours().toString().padStart(2, '0');
+        const minutes = datetime.getMinutes().toString().padStart(2, '0');
+
+        return `${day}.${month}.${year} ${hours}:${minutes}`;
+    }
+
     getFromServer();
 
-
     return (
-        <div>
-            <MainNavBar />
-            <div className={styles.profile}>
-                <Sidebar index={3}/>
-                <div className={styles.content}>
-                    <div className={styles.photo}>
-                        <img src="/img/filler.jpg" alt="фото профиля"/>
-                    </div>
-                    {eventList.length > 0? (
-                        <p>Вы еще не создали ни одного мероприятия</p>
-                    ) : (
-                        [eventList].map(x => (
-                            // eslint-disable-next-line react/jsx-key
-                            <div>
-                                <p>{x[0]}</p>
-                            </div>
-
-                        ))
-                    )}
-                </div>
+        <>
+            <div className={styles.list}>
+                {eventList == null? (
+                    <h1 className="text-white fs-4">Вы еще не создали ни одного мероприятия</h1>
+                ) : (
+                    eventList.map(x => (
+                        // eslint-disable-next-line react/jsx-key
+                        <div className={styles.items} key={x.event_id}>
+                            <p>{x.event_name}</p>
+                            <p>{getDatetime(x.event_datetime)}</p>
+                            <button className="btn btn-light h1 fw-bold">подробнее</button>
+                        </div>
+                    ))
+                )}
+                <button
+                    className={styles.button}
+                    onClick={ () => setModalActive(true) }
+                >Создать мероприятие</button>
             </div>
-        </div>
+            <CreateEvent active={modalActive} setActive={setModalActive}/>
+        </>
     );
 };
 
-export default MyEvents;
+export default withMainLayout(MyEvents, 4);

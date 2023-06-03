@@ -36,7 +36,7 @@ const Login = ({active, setActive}) => {
             await router.push("/Main");
         } catch(e) {
             setMsg({err: e.response.data.status});
-        };
+        }
     }
 
     return (
