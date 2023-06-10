@@ -1,12 +1,19 @@
-import Link from "next/link"
-import {useEffect, useState} from "react";
-import axios from "axios";
-import {IMAGES_MANIFEST} from "next/constants";
+import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Image from "next/image";
+import axios from "axios";
 
+const sidebarItems = [
+    { name: 'Главная', route: '/Main' },
+    { name: 'Подписки', route: '/Subscribes' },
+    { name: 'Активные мероприятия', route: '#' },
+    { name: 'Мои мероприятия', route: '/MyEvents' },
+    { name: 'Настройки', route: '/#' },
+];
 
-const Sidebar  = (index) => {
-    const [active, setActive] = useState(null);
+const Sidebar = () => {
+    const router = useRouter();
     const [avatar, setAvatar] = useState(null);
 
     useEffect(() => {
@@ -24,48 +31,20 @@ const Sidebar  = (index) => {
 
     return (
         <div className="d-flex flex-column flex-shrink-0 p-3 h-100 w-25">
-
             <ul className="nav nav-pills flex-column mb-auto">
-                <li className="nav-item">
-                    <Link href="/Main"
-                          className={`nav-link ${active === 0 ? `active`: `text-white`}`}
-                            onClick={() => setActive(index.value?? 0)}>
-                        Главная
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/Subscribes" className={`nav-link ${active === 1 ? `active`: `text-white`}`}
-                          onClick={() => setActive(index.value?? 1)}>
-
-                        Подписки
-                    </Link>
-
-                </li>
-                <li>
-                    <Link href="#" className={`nav-link ${active === 2 ? `active`: `text-white`}`}
-                        onClick={()=>setActive(index.value?? 2)}>
-
-                        Активные мероприятия
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/MyEvents" className={`nav-link ${active === 3 ? `active`: `text-white`}`}
-                        onClick={()=>setActive(index.value?? 3)}>
-                        Мои мероприятия
-                    </Link>
-                </li>
-                <li>
-                    <a href="#" className="nav-link text-white">
-                        Настройки
-                    </a>
-                </li>
+                {sidebarItems.map((item) => (
+                    <li key={item.name} className="nav-item">
+                        <Link href={item.route}
+                              className={ `nav-link ${router.pathname === item.route ? 'active' : 'text-white'}`}>
+                            {item.name}
+                        </Link>
+                    </li>
+                ))}
             </ul>
-            <hr className="text-white"/>
 
             <div>
                 <Link className="d-flex align-items-center text-white text-decoration-none"
-                      onClick={()=>setActive(index.value?? null)}
-                        href="/Profile">
+                      href="/Profile">
                     <Image
                         src={`data:image/jpeg;base64,${avatar}`}
                         width={50}
@@ -77,7 +56,8 @@ const Sidebar  = (index) => {
                 </Link>
             </div>
         </div>
+
     );
-};
+}
 
 export default Sidebar;

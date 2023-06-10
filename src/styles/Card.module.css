@@ -1,43 +1,81 @@
-
 .card {
-    margin-left: 15px;
-    position: relative;
     width: 100%;
-    height: 500px;
-    border-radius: 10px;
-    flex-shrink: 0;
+    /*height: 80%;*/
     overflow: hidden;
+
+    padding: 1%;
+
+    display: flex;
+    gap: 20px;
+
+    /*background: linear-gradient(45deg, #4a1479, #8a2be2, #697dff, #1f2f94);*/
+
+    /*background: linear-gradient(45deg, #000046, rgba(107, 154, 208, 0.72));*/
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
 }
 
 
-.card::before {
-    content: ""; /* создание псевдоэлемента */
-    position: absolute; /* установка позиции псевдоэлемента */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 50, 0.3); /* установка цвета фона с прозрачностью */
-    opacity: 1; /* установка непрозрачности */
-    z-index: 1; /* установка z-index для псевдоэлемента */
-}
 
 
-.card img {
-    position: relative;
-    width: 100%;
-    z-index: 0;
-}
-
-.card p {
-    position: relative;
+.card h1 {
     font-size: 2em;
     color: white;
     z-index: 3;
     text-shadow: 2px 2px  4px rgba(24, 24, 24, 0.7);
 }
 
-.card button {
-    position: relative;
+.card p {
+    font-size: 1.1em;
+    color: white;
     z-index: 3;
+    text-shadow: 2px 2px  4px rgba(24, 24, 24, 0.7);
+}
+
+.cardPhoto {
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+
+.cardPhoto::before {
+    content: ""; /* создание псевдоэлемента */
+    position: absolute; /* установка позиции псевдоэлемента */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* установка цвета фона с прозрачностью */
+    opacity: 1; /* установка непрозрачности */
+    z-index: 1; /* установка z-index для псевдоэлемента */
+}
+
+.cardPhoto img {
+    width: 400px;
+    z-index: 0;
+}
+
+.cardText {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.btn {
+    padding: 4px;
+    align-self: end;
+
+    color: white;
+
+    border-radius: 2px;
+}
+
+.btn:hover {
+
+    color: white;
+    border: 1px solid white;
+    border-radius: 2px;
 }
