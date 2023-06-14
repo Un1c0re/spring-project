@@ -74,21 +74,23 @@ const Event = () => {
         <div className={styles.content}>
             {eventData != null  && ownerData != null ? (
                 <>
-                    <div className={styles.card}>
-                        <Image
-                            src={`data:image/jpeg;base64,${formatImage(eventData.event_photo)}`}
-                            width={700}
-                            height={400}
-                            alt="фото профиля"
-                            loading="eager"
-                        />
-                        <h1>{eventData.event_name}</h1>
-                        <h2>от {ownerData.login}</h2>
+                    <div className="w-100 d-flex align-items-center gap-5">
+                            <Image
+                                src={`data:image/jpeg;base64,${formatImage(eventData.event_photo)}`}
+                                className={styles.card}
+                                width={500}
+                                height={300}
+                                alt="фото профиля"
+                                loading="eager"
+                            />
+                        <div className="w-100 align-self-start d-flex flex-column gap-3">
+                            <h1>{eventData.event_name}</h1>
+                            <h2 className="text-muted">от {ownerData.login}</h2>
+                            <h5>Когда: {getDatetime(eventData.event_datetime)}</h5>
+                            <h5>Где: {eventData.event_place}</h5>
+                        </div>
                     </div>
-
-                    <p>{eventData.event_description}</p>
-                    <p>Когда: {getDatetime(eventData.event_datetime)}</p>
-                    <p>Где: {eventData.event_place}</p>
+                    <h5 className="text-center">{eventData.event_description}</h5>
                     <button className={styles.btn}>Зарегистрироваться</button>
                 </>
 

@@ -3,15 +3,17 @@
 }
 
 .button {
-  background-color: white;
-  color: black;
+  background: transparent;
+  color: white;
   height: 50px;
   width: 180px;
 }
 
 .button:hover {
-  color:white;
-  background-color: rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: white;
+  border: 2px solid lightgreen;
+  border-radius: 5px;
 }
 
 .button:active {

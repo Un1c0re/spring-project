@@ -10,8 +10,8 @@
     align-items: center;
     justify-content: center;
 
-    background: rgba(24, 24, 55, 0.5);
-    backdrop-filter: blur(2px);
+    background: rgba(24, 24, 25, 0.5);
+    backdrop-filter: blur(10px);
 
     transform: scale(0);
 }
@@ -30,7 +30,7 @@
     justify-content: space-around;
 
     border-radius: 15px;
-    background-color: rgba(125, 125, 150, 0.2);
+    background-color: rgba(24, 24, 24, 0.8);
 
     color: white;
     font-weight: bold;
@@ -39,19 +39,31 @@
 .submitBtn {
     height: 40px;
     width: 250px;
-    background: #46b959;
+
+    background: transparent;
     color: white;
+
     border: none;
-    border-radius: 10px;
+}
+
+.submitBtn:hover {
+    border: 2px solid #46b959;
+    border-radius: 5px;
 }
 
 .cancelBtn {
     height: 40px;
     width: 450px;
-    background: #d52943;
+
+    background: transparent;
     color: white;
+
     border: none;
-    border-radius: 10px;
+}
+
+.cancelBtn:hover {
+    border: 2px solid #d52943;
+    border-radius: 5px;
 }
 
 

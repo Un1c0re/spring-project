@@ -78,7 +78,7 @@ const Profile = () => {
                     <div className={styles.userData}>
                         <p className={styles.info}> {user.login} </p>
                         <p className={styles.info}> {user.email} </p>
-                        <button className={`${styles.btn}  ${styles.redBtn}`} onClick={eatCookie}>Выйти</button>
+                        <button className={styles.btnRed} onClick={eatCookie}>Выйти</button>
                     </div>
                 </div>
             </div>

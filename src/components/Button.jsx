@@ -1,4 +1,5 @@
 import styles from "@/styles/Home.module.css";
+import cardStyles from "@/styles/Card.module.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Link from "next/link"

@@ -1,6 +1,5 @@
-import Home from ".//Home";
 import Head from "next/head";
-import styles from "@/styles/Index.module.css"
+import HomePage from "./HomePage";
 
 const IndexPage = () => {
   return (
@@ -11,7 +10,7 @@ const IndexPage = () => {
               <meta name="viewport" content="width=device-width, initial-scale=1" />
           </Head>
 
-          <Home />
+          <HomePage />
       </>
   );
 };

@@ -6,7 +6,9 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
+
     const connection = await connect();
+
     const {email, password} = req.body;
     const { token } = parseCookies({ req });
 

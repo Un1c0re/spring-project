@@ -4,17 +4,20 @@ import Sidebar from "@/components/Sidebar";
 import styles from "@/styles/MainLayout.module.css";
 
 
-const MainLayout = ({ children , index}) => (
-    <div className={styles.bg}>
-        <div className="container vh-100 pt-5 d-flex flex-column gap-4">
-            <header> <MainNavBar /> </header>
+const MainLayout = ({ children }) => {
 
-            <div className={styles.content}>
-                <Sidebar />
-                {children}
+    return (
+        <div className={styles.bg}>
+            <div className="container vh-100 pt-5 d-flex flex-column gap-4">
+                <header><MainNavBar/></header>
+
+                <div className={styles.content}>
+                    <Sidebar/>
+                    {children}
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default MainLayout;

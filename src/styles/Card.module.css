@@ -65,16 +65,18 @@
 }
 
 .btn {
+    text-decoration: none;
     padding: 4px;
     align-self: end;
 
-    color: white;
+    border: none;
+    background: transparent;
 
-    border-radius: 2px;
+    color: white;
+    z-index: 3;
 }
 
 .btn:hover {
-
     color: white;
     border: 1px solid white;
     border-radius: 2px;

@@ -53,4 +53,4 @@ const Subscribes = () => {
     );
 }
 
-export default withMainLayout(Subscribes, 1);
+export default withMainLayout(Subscribes);

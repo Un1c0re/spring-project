@@ -10,8 +10,8 @@
     align-items: center;
     justify-content: center;
 
-    background: rgba(24, 24, 55, 0.5);
-    backdrop-filter: blur(2px);
+    background: rgba(24, 24, 25, 0.3);
+    backdrop-filter: blur(10px);
 
     transform: scale(0);
 }
@@ -32,7 +32,7 @@
 
     border: 1px solid #FFFFFF;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(25, 25, 25, 0.15);
     backdrop-filter: blur(15px);
 }
 
@@ -91,21 +91,23 @@
     overflow: hidden;
 }
 
-
-.btnGreen {
+.btnRed, .btnGreen {
     height: 40px;
     width: 150px;
-    background: #46b959;
+    background: transparent;
     color: white;
     border: none;
-    border-radius: 10px;
 }
 
-.btnRed {
-    height: 40px;
-    width: 150px;
-    background: #d52943;
-    color: white;
-    border: none;
-    border-radius: 10px;
+.btnRed:hover, .btnGreen:hover {
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.btnRed:hover {
+    border-color: #d52943;
+}
+
+.btnGreen:hover {
+    border-color: lightgreen;
 }

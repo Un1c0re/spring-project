@@ -8,12 +8,31 @@
     font-size: 1vw;
 }
 
-.search::-webkit-input-placeholder {
-    color: white;
-}
+/*.search::-webkit-input-placeholder {*/
+/*    color: white;*/
+/*}*/
 
 .search:focus-within {
     border: 1px solid white;
+}
+
+.searchbtn {
+    height: 36px;
+    width: 300px;
+
+    background: transparent;
+    border: none;
+    /*border-bottom: 2px solid white;*/
+
+    text-align: center;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+}
+
+.searchbtn:hover {
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .content {

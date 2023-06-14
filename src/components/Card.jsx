@@ -35,10 +35,10 @@ const Card = ({event}) => {
                 <h1>{event.event_name}</h1>
                 <p>Когда: {getDatetime(event.event_datetime)}</p>
                 <p>Где: {event.event_place}</p>
-                <Button
-                    href={`/Event?id=${event.event_id}`}
+                <Link
                     className={styles.btn}
-                >Подробнее</Button>
+                    href={`/Event?id=${event.event_id}`}
+                >Подробнее</Link>
             </div>
         </div>
     );

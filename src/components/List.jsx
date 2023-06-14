@@ -3,7 +3,7 @@ import styles from"@/styles/List.module.css"
 import {useState} from "react";
 import axios from "axios";
 const List = () => {
-    const [eventList,setEventList] = useState(null);
+    const [eventList, setEventList] = useState(null);
 
     const getFromServer = async () => {
         if(eventList == null) {

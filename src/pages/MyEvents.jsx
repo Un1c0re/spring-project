@@ -1,10 +1,11 @@
 "use client"
 
 import axios from "axios";
-import {useState} from "react";
+import { useState } from "react";
 import withMainLayout from "@/utils/hocs/withMainLayout";
 import styles from "@/styles/MyEvents.module.css";
 import CreateEvent from "@/components/CreateEvent";
+import Button from "@/components/Button";
 
 const MyEvents = () => {
     const [eventList,setEventList] = useState(null);
@@ -46,7 +47,10 @@ const MyEvents = () => {
                         <div className={styles.items} key={x.event_id}>
                             <p>{x.event_name}</p>
                             <p>{getDatetime(x.event_datetime)}</p>
-                            <button className="btn btn-light h1 fw-bold">подробнее</button>
+                            <Button
+                                href={`/Event?id=${x.event_id}`}
+                                className="btn h1 border-light fw-bold text-white"
+                            >подробнее</Button>
                         </div>
                     ))
                 )}
@@ -60,4 +64,4 @@ const MyEvents = () => {
     );
 };
 
-export default withMainLayout(MyEvents, 4);
+export default withMainLayout(MyEvents);

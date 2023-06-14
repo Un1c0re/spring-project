@@ -1,9 +1,9 @@
 import MainLayout from "@/components/MainLayout";
 
-const withMainLayout = (Page, index) => {
+const withMainLayout = (Page) => {
     return () => (
-        <MainLayout index={index}>
-            <Page/>
+        <MainLayout>
+            <Page />
         </MainLayout>
     );
 };

@@ -4,7 +4,7 @@ import {useState} from "react";
 import Login from "@/components/Login";
 import styles from "@/styles/Home.module.css";
 
-const Home = () => {
+const HomePage = () => {
     const [modalActive, setModalActive] = useState(false);
 
     return (
@@ -26,7 +26,7 @@ const Home = () => {
             <Login active={modalActive} setActive={setModalActive}/>
         </>
     );
-};
+}
 
+export default withStartLayout(HomePage);
 
-export default withStartLayout(Home);

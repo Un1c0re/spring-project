@@ -7,4 +7,4 @@ const Main = () => (
     <List />
 );
 
-export default withMainLayout(Main, 0);
+export default withMainLayout(Main);

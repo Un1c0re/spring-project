@@ -14,12 +14,11 @@
     grid-template-columns: repeat(2, 1fr);
     /*padding: 5% 0 20% 0;*/
 
-    background: rgba( 150, 150, 230, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: rgba( 24, 24, 55, 0.25 );
     backdrop-filter: blur( 10px );
-    -webkit-backdrop-filter: blur( 10px );
-    border-radius: 10px;
+
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 5px;
 }
 
 
@@ -64,18 +63,47 @@
 }
 
 
-.btn {
+.btn, .btnRed {
     height: 40px;
     width:  300px;
+
     background: none;
     border-radius: 5px;
+
     color: white;
     border: none;
+
+    font-weight: bold;
 }
 
 /*.photoBtn { border-bottom: 1px solid white; }*/
-.redBtn { background: rgb(213, 41, 67); }
+.btnRed:hover {
+    border: 2px solid rgb(213, 41, 67);
+    border-radius: 5px;
+}
 
 .btn:hover {
-    box-shadow: 5px 8px 8px 0 rgba(34, 60, 80, 0.2);
+    border: 2px solid white;
+    border-radius: 5px;
 }
+
+/*.btnRed, .btnGreen {*/
+/*    height: 40px;*/
+/*    width: 150px;*/
+/*    background: transparent;*/
+/*    color: white;*/
+/*    border: none;*/
+/*}*/
+
+/*.btnRed:hover, .btnGreen:hover {*/
+/*    border: 2px solid;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*.btnRed:hover {*/
+/*    border-color: #d52943;*/
+/*}*/
+
+/*.btnGreen:hover {*/
+/*    border-color: lightgreen;*/
+/*}*/

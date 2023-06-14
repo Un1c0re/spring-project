@@ -9,6 +9,18 @@ const  handler = async (req, res) => {
     const connection = await connect();
     const {email, login, password} = req.body;
 
+    if(email.length <= 0) {
+        res.status(403).json({status: "Введите почту 🤨"})
+        connection.end();
+        return;
+    }
+
+    if(login.length <= 0) {
+        res.status(403).json({status: "Введите логин 🤨"})
+        connection.end();
+        return;
+    }
+
     if(password.length <= 0) {
         res.status(403).json({status: "Введите пароль 🤨"})
         connection.end();

@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "@/styles/Login.module.css"
-import Link from "next/link"
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -35,7 +34,11 @@ const Login = ({active, setActive}) => {
             setMsg({msg: data.data.status});
             await router.push("/Main");
         } catch(e) {
-            setMsg({err: e.response.data.status});
+            if( e.response.status === 500 ) {
+                setMsg({err: "Неполадки на сервере ☠️☠️☠️"});
+            } else {
+                setMsg({err: e.response.data.status});
+            }
         }
     }
 
@@ -43,7 +46,10 @@ const Login = ({active, setActive}) => {
         <>
             <div
                 className={ active  && !modalActive ? `${styles.bg} ${styles.active}` : styles.bg}
-                onClick={() => setActive(false)}
+                onClick={() => {
+                    setActive(false);
+                    setMsg({"null": "start"});
+                }}
             >
                 <div className={styles.box} onClick={e => e.stopPropagation()}>
                     <form className={styles.Form} onSubmit={handleSubmit}>
@@ -84,8 +90,11 @@ const Login = ({active, setActive}) => {
                         ))}
                         <div className="w-100 d-flex justify-content-around">
                             <p className="text-white">Впервые здесь?</p>
-                            <p className="text-white fw-bold"
-                            onClick={() => setModalActive(true)}
+                            <p className={styles.changemodal}
+                            onClick={() => {
+                                setModalActive(true);
+                                setMsg({"null": "null"});
+                            }}
                             > Зарегистрируйтесь</p>
                         </div>
                     </form>

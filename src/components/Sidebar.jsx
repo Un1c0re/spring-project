@@ -6,10 +6,10 @@ import axios from "axios";
 
 const sidebarItems = [
     { name: 'Главная', route: '/Main' },
-    { name: 'Подписки', route: '/Subscribes' },
+    { name: 'Подписки', route: '#' },
     { name: 'Активные мероприятия', route: '#' },
     { name: 'Мои мероприятия', route: '/MyEvents' },
-    { name: 'Настройки', route: '/#' },
+    { name: 'Настройки', route: '#' },
 ];
 
 const Sidebar = () => {

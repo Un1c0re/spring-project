@@ -4,9 +4,12 @@ import connect from "./db"
 
 const handler = async (req, res) => {
     const connection = await connect();
-    const clientData = req.body;
+    const clientData = req.body
+    const name = clientData.eventname;
+
     try {
-        const [data] = await connection.query('SELECT * FROM event WHERE event_id = ?', [clientData.event_id]);
+        const [data] = await connection.query('SELECT * FROM event WHERE event_name = ?', [name]);
+
         if(data.length > 0) {
             res.status(200).json(data);
         } else {
